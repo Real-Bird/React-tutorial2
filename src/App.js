@@ -1,9 +1,12 @@
-import AppRouter from "./Router";
+import Counter from "./components/Counter";
+import Todos from "./components/Todos";
 
 function App() {
   return (
     <>
-      <AppRouter />
+      <Counter />
+      <hr />
+      <Todos />
     </>
   );
 }
