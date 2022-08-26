@@ -6,7 +6,6 @@ const TodoItem = ({ text, id, done }) => {
   const dispatch = useDispatch();
   const onToggle = () => dispatch(toggle(id));
   const onDelete = () => dispatch(remove(id));
-  console.log(done);
   return (
     <div>
       <input
@@ -25,7 +24,7 @@ const TodoItem = ({ text, id, done }) => {
 
 const Todos = () => {
   const {
-    todos: { input, todos },
+    toDos: { input, toDos },
   } = useSelector((state) => state);
   const dispatch = useDispatch();
   const onSubmit = (e) => {
@@ -51,7 +50,7 @@ const Todos = () => {
         <button type="submit">등록</button>
       </form>
       <div>
-        {todos.map((todo) => (
+        {toDos.map((todo) => (
           <TodoItem key={todo.id} {...todo} />
         ))}
       </div>

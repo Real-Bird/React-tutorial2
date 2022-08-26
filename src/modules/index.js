@@ -1,10 +1,12 @@
-import { combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import counter from "./counter";
-import todos from "./todos";
+import toDos from "./todos";
 
-const rootReducer = combineReducers({
-  counter,
-  todos,
+const store = configureStore({
+  reducer: {
+    counter: counter.reducer,
+    toDos: toDos.reducer,
+  },
 });
 
-export default rootReducer;
+export default store;
