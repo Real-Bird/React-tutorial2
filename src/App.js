@@ -1,12 +1,9 @@
-import Counter from "./components/Counter";
-import Todos from "./components/Todos";
+import SampleContainer from "./components/SampleContainer";
 
 function App() {
   return (
     <>
-      <Counter />
-      <hr />
-      <Todos />
+      <SampleContainer />
     </>
   );
 }
