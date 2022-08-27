@@ -1,11 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { increase, decrease } from "../modules/counter";
+import {
+  increase,
+  decrease,
+  increaseAsync,
+  decreaseAsync,
+} from "../modules/counter";
 const Counter = () => {
   const { counter: number } = useSelector((state) => state);
   const dispatch = useDispatch();
-  const onIncrease = () => dispatch(increase());
-  const onDecrease = () => dispatch(decrease());
+  const onIncrease = () => dispatch(increaseAsync(increase));
+  const onDecrease = () => dispatch(decreaseAsync(decrease));
   return (
     <div
       style={{

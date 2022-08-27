@@ -62,4 +62,16 @@ const counter = createSlice({
 
 export const { increase, decrease } = counter.actions;
 
+export const increaseAsync = (increase) => (dispatch) => {
+  setTimeout(() => {
+    dispatch(increase());
+  }, 1000);
+};
+
+export const decreaseAsync = (decrease) => (dispatch) => {
+  setTimeout(() => {
+    dispatch(decrease());
+  }, 1000);
+};
+
 export default counter;
