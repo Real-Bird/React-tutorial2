@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as api from "../lib/api";
+import { takeEvery, put, call } from "redux-saga/effects";
 import createRequestThunk from "../lib/createRequestThunk";
+import { finishLoading, startLoading } from "../lib/loading";
 
 const sampleReducer = createSlice({
   name: "sample",
@@ -68,6 +70,21 @@ const {
   GET_USERS_FAILURE,
   GET_USERS_SUCCESS,
 } = sampleReducer.actions;
+
+function* getPostSaga(action) {
+  yield put(startLoading(GET_POST));
+  try {
+    const post = yield call(api.getPost, action.payload);
+    yield put(GET_POST_SUCCESS(post.data));
+  } catch (e) {
+    yield put(GET_POST_FAILURE({ payload: e, error: true }));
+  }
+  yield put(finishLoading(GET_POST)); // 로딩 완료
+}
+
+export function* sampleSaga() {
+  yield takeEvery(GET_POST, getPostSaga);
+}
 
 export const getPost = createRequestThunk(
   GET_POST,

@@ -12,7 +12,7 @@ const SampleContainer = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPost(1));
-    dispatch(getUsers(1));
+    dispatch(getUsers());
   }, [getPost, getUsers]);
   return (
     <>
